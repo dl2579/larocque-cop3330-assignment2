@@ -2,6 +2,11 @@ package ex24;
 import java.util.Scanner;
 import java.util.Arrays;
 
+/*
+ *  UCF COP3330 Fall 2021 Assignment 2 Solution
+ *  Copyright 2021 Damian LaRocque
+ */
+
 public class App {
     public static boolean isAnagram(String s1, String s2){
         if(s1.length() != s2.length()) {
