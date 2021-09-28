@@ -5,6 +5,18 @@ import java.util.Scanner;
 
 public class App {
 
+    public static ArrayList<String> removeEmployee(ArrayList<String> arrList, String employee){
+        arrList.remove(employee);
+        return arrList;
+    }
+
+    public static void printEmployess(ArrayList<String> empList){
+        System.out.printf("There are %d employees: \n", empList.size());
+        for(String i : empList){
+            System.out.println(i);
+        }
+    }
+
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
 
@@ -15,20 +27,14 @@ public class App {
         employeeList.add("Amanda Cullen");
         employeeList.add("Jeremy Goodwin");
 
-        System.out.printf("There are %d employees: \n", employeeList.size());
-        for(String i : employeeList){
-            System.out.println(i);
-        }
+        printEmployess(employeeList);
 
         System.out.print("\nEnter an employee name to remove: ");
         String emp = sc.nextLine();
-        employeeList.remove(emp);
-        System.out.printf("\nThere are %d employees: \n", employeeList.size());
-        for(String i : employeeList){
-            System.out.println(i);
-        }
 
+        removeEmployee( employeeList,emp);
 
+        printEmployess(employeeList);
 
     }
 }

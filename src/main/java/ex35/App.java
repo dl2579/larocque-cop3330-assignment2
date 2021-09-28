@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
+    public static String pickWinner(ArrayList<String> contestants){
+        int random = (int) (Math.random() * contestants.size()) ;
+        return contestants.get(random);
+    }
 
     public static void main(String args[]){
         ArrayList<String> contestants = new ArrayList<String>();
@@ -16,7 +20,7 @@ public class App {
             contestants.add(input);
         } while(!input.equals(""));
 
-        int random = (int) (Math.random() * contestants.size()) ;
-        System.out.printf("The winner is...%s", contestants.get(random));
+
+        System.out.printf("The winner is...%s", pickWinner(contestants));
     }
 }
