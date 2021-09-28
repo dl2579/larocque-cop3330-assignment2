@@ -50,6 +50,23 @@ public class App {
 
     }
 
+    public static String filteringRecord(TreeMap<String, Employee> tmap, String searchString){
+        String output ="";
+
+        output += "Results:\n ";
+        output += "\nName                | Position          | Separation Date\n";
+        output += "--------------------|-------------------|----------------\n";
+        String name ="";
+
+        for (Map.Entry<String, Employee> e : tmap.entrySet()) {
+            if(e.getValue().lastName.contains(searchString)) {
+                name = e.getValue().firstName + " " + e.getValue().lastName;
+                output += String.format("%-19.20s | %-17.10s | %s\n", name, e.getValue().position, e.getValue().sepDate);
+            }
+        }
+        return output;
+    }
+
     public static void main(String args[])
     {
         Employee emp1 = new Employee("John", "Johnson", "Manager", "2016-12-31");
@@ -72,16 +89,8 @@ public class App {
         System.out.print("Enter a search string: ");
         String searchString = sc.nextLine();
 
-        System.out.println("\nResults: ");
-        System.out.println("\nName                | Position          | Separation Date");
-        System.out.println("--------------------|-------------------|----------------");
-        String name ="";
-        for (Map.Entry<String, Employee> e : tmap.entrySet()) {
-            if(e.getValue().lastName.contains(searchString)) {
-                name = e.getValue().firstName + " " + e.getValue().lastName;
-                System.out.printf("%-19.20s | %-17.10s | %s\n", name, e.getValue().position, e.getValue().sepDate);
-            }
-        }
+        System.out.println();
+        System.out.println(filteringRecord(tmap,searchString));
 
     }
 }

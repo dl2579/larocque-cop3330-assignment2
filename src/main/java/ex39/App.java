@@ -6,8 +6,7 @@ import java.util.TreeMap;
 
 public class App {
 
-    public static class Employee
-    {
+    public static class Employee {
         // Instance Variables
         String firstName;
         String lastName;
@@ -16,38 +15,51 @@ public class App {
 
         // Constructor Declaration of Class
         public Employee(String firstName, String lastName,
-                   String position, String sepDate)
-        {
+                        String position, String sepDate) {
             this.firstName = firstName;
             this.lastName = lastName;
             this.position = position;
             this.sepDate = sepDate;
         }
+
         // method 1
-        public String getFirstName()
-        {
+        public String getFirstName() {
             return firstName;
         }
 
         // method 2
-        public String getLastName()
-        {
+        public String getLastName() {
             return lastName;
         }
 
         // method 3
-        public String getPosition()
-        {
+        public String getPosition() {
             return position;
         }
 
         // method 4
-        public String getSepDate()
-        {
+        public String getSepDate() {
             return sepDate;
         }
 
     }
+
+    public static String sortingRecord(TreeMap<String, Employee> tmap) {
+        String output = "";
+
+        output += "Results:\n ";
+        output += "\nName                | Position          | Separation Date\n";
+        output += "--------------------|-------------------|----------------\n";
+        String name = "";
+
+        for (Map.Entry<String, Employee> e : tmap.entrySet()) {
+            name = e.getValue().firstName + " " + e.getValue().lastName;
+            output += String.format("%-19.20s | %-17.10s | %s\n", name, e.getValue().position, e.getValue().sepDate);
+        }
+
+        return output;
+    }
+
 
     public static void main(String args[])
     {
@@ -67,13 +79,16 @@ public class App {
         tmap.put(emp5.lastName, emp5);
         tmap.put(emp6.lastName, emp6);
 
+        System.out.println(sortingRecord(tmap));
+
+        /*
         System.out.println("\nName                | Position          | Separation Date");
         System.out.println("--------------------|-------------------|----------------");
         String name ="";
         for (Map.Entry<String, Employee> e : tmap.entrySet()) {
             name = e.getValue().firstName + " " + e.getValue().lastName;
             System.out.printf("%-19.20s | %-17.10s | %s\n", name, e.getValue().position, e.getValue().sepDate);
-        }
+        }*/
 
     }
 }
